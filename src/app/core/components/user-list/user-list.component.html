@@ -1,0 +1,23 @@
+<div>
+  <table>
+    <thead>
+      <td>First Name</td>
+      <td>Middle Name</td>
+      <td>Last Name</td>
+      <td>Age</td>
+      <td>Is Active</td>
+      <td>Action</td>
+    </thead>
+    <tbody>
+       <tr *ngFor="let user of users">
+         <td>{{user.firstName}}</td>
+         <td>{{user.middleName}}</td>
+         <td>{{user.lastName}}</td>
+         <td>{{user.age}}</td>
+         <td></td>
+         <td> <button (click)="selectUser(user)"> Select User </button></td>
+       </tr>
+
+    </tbody>
+  </table>
+</div>

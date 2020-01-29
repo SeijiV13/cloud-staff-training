@@ -1,0 +1,3 @@
+<app-menu></app-menu>
+<app-user-list [users]="listOfUsers" (selectedUser)="selectedUser($event)"></app-user-list>
+<app-user-form #userForm (formValue)="getFormValue($event)"></app-user-form>

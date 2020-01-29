@@ -1,0 +1,25 @@
+<div [formGroup]="form">
+  <label>First Name</label>
+  <input formControlName="firstName"/>
+  <div *ngIf="form.controls.firstName.errors?.required && form.controls.firstName.touched"> First Name is required</div>
+<br>
+
+  <label>Middle Name</label>
+  <input formControlName="middleName"/>
+  
+<br>
+  <label>Last Name</label>
+  <input formControlName="lastName"/>
+<br>
+
+  <label>Age</label>
+  <input formControlName="age"/>
+  <br>
+
+  <label>Active User</label>
+  <input formControlName="activeUser"/>
+  
+</div>
+
+<button (click)="clear()">Clear</button>
+<button (click)="submit()">Submit</button>
