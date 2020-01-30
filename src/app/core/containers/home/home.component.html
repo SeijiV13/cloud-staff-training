@@ -1,3 +1,12 @@
-<app-menu></app-menu>
-<app-user-list [users]="listOfUsers" (selectedUser)="selectedUser($event)"></app-user-list>
-<app-user-form #userForm (formValue)="getFormValue($event)"></app-user-form>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+        <br>
+        <app-menu></app-menu>
+  
+    </div>
+    <div class="col-sm-10">
+        <app-user-list [users]="listOfUsers" (emitDeleteUser)="deleteUser($event)" (selectedUser)="getSelectedUser($event)"></app-user-list>
+    </div>
+  </div>
+</div>

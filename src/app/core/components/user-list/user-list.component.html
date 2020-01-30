@@ -1,23 +1,28 @@
-<div>
-  <table>
+
+   <h4>User List</h4>
+   <hr>
+   <table class="table table-responsive table-stripe">
     <thead>
       <td>First Name</td>
       <td>Middle Name</td>
       <td>Last Name</td>
       <td>Age</td>
-      <td>Is Active</td>
       <td>Action</td>
     </thead>
     <tbody>
-       <tr *ngFor="let user of users">
+       <tr [ngClass]="{active: user.activeUser}" *ngFor="let user of users">
          <td>{{user.firstName}}</td>
          <td>{{user.middleName}}</td>
          <td>{{user.lastName}}</td>
          <td>{{user.age}}</td>
-         <td></td>
-         <td> <button (click)="selectUser(user)"> Select User </button></td>
+         <td><span></span></td>
+         <td> 
+            <button class="btn btn-primary" (click)="redirectToEdit(user)"> Edit User </button>&nbsp;
+           <button class="btn btn-primary" (click)="selectUser(user)"> Select User </button>
+           &nbsp;
+           <button class="btn btn-warning" (click)="deleteUser(user)"> Delete User </button>
+          </td>
        </tr>
 
     </tbody>
   </table>
-</div>
