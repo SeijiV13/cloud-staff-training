@@ -1,7 +1,9 @@
+import { SetSelectedUser } from './../../actions/user.action';
 import { UserService } from './../../../shared/services/user.service';
 import { User } from './../../../shared/models/User';
 import { Component, OnInit, AfterViewInit, OnDestroy, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +15,8 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy, OnCh
   @Output() selectedUser = new EventEmitter();
   @Output() emitDeleteUser = new EventEmitter();
   constructor(private router: Router,
-              private userService: UserService) { }
+              private userService: UserService,
+              private store: Store) { }
 
   ngOnInit() {
     this.userService.setListOfUsers(this.users);
@@ -31,6 +34,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy, OnCh
   }
 
   redirectToEdit(user: User) {
+    this.store.dispatch(new SetSelectedUser(user));
     this.router.navigate([`form/${user.id}`]);
   }
 }

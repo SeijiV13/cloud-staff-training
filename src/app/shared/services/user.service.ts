@@ -70,6 +70,7 @@ export class UserService {
 
   deleteUser(id) {
     return this.http.delete(`${ENDPOINT_URL}/users/${id}`).pipe(
+      
       tap((data) => {
         return data;
       },

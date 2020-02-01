@@ -11,10 +11,10 @@
     </thead>
     <tbody>
        <tr [ngClass]="{active: user.activeUser}" *ngFor="let user of users">
-         <td>{{user.firstName}}</td>
-         <td>{{user.middleName}}</td>
-         <td>{{user.lastName}}</td>
-         <td>{{user.age}}</td>
+         <td>{{user?.firstName}}</td>
+         <td>{{user?.middleName}}</td>
+         <td>{{user?.lastName}}</td>
+         <td>{{user?.age}}</td>
          <td><span></span></td>
          <td> 
             <button class="btn btn-primary" (click)="redirectToEdit(user)"> Edit User </button>&nbsp;

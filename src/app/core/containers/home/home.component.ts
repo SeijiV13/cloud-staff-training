@@ -1,26 +1,34 @@
 import { UserService } from './../../../shared/services/user.service';
 import { UserFormComponent } from './../../components/user-form/user-form.component';
 import { User } from './../../../shared/models/User';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Select, Store } from '@ngxs/store';
+import { UserState } from '../../states/user.state';
+import { GetUsers } from '../../actions/user.action';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+  @Select(UserState.getListOfUsers) getListOfUsers$: Observable<User[]>;
   selectedUser: User;
   listOfUsers: User[] = [];
-  constructor(private userService: UserService) { }
+  constructor(private store: Store, private userService: UserService) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
+  ngAfterViewInit() {
+    this.store.dispatch(new GetUsers);
+
+   }
   getUsers() {
-    this.userService.getUsers().subscribe((user: User[]) => {
-      this.listOfUsers = user;
+    this.getListOfUsers$.subscribe((users) => {
+      this.listOfUsers = users;
     });
   }
 

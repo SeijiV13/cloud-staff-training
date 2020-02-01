@@ -1,3 +1,4 @@
+import { UserState } from './core/states/user.state';
 import { UserService } from './shared/services/user.service';
 import { BootstrapModule } from './shared/bootstrap/bootstrap/bootstrap.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormContainerComponent } from './core/containers/form-container/form-container.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     BootstrapModule,
+    NgxsModule.forRoot([UserState]),
+    NgxsLoggerPluginModule.forRoot(),
     ToastrModule.forRoot()
   ],
   providers: [
