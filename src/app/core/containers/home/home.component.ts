@@ -19,15 +19,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private store: Store, private userService: UserService) { }
 
   ngOnInit() {
+    this.store.dispatch(new GetUsers);
     this.getUsers();
   }
 
   ngAfterViewInit() {
-    this.store.dispatch(new GetUsers);
-
    }
   getUsers() {
-    this.getListOfUsers$.subscribe((users) => {
+    this.getListOfUsers$.subscribe((users: User[]) => {
       this.listOfUsers = users;
     });
   }

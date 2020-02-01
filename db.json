@@ -1,9 +1,9 @@
 {
-  "users": {
+  "users": [{
     "id": 1,
     "firstName": "seiji",
     "lastName": "villafranca",
     "age": 30,
     "activeUser": true
-  }
+  }]
 }
